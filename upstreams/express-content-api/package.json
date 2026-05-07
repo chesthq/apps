@@ -1,0 +1,14 @@
+{
+  "name": "chest-app-express-content-api",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "dependencies": {
+    "express": "^5.0.0"
+  },
+  "engines": {
+    "node": ">=20"
+  }
+}
