@@ -22,13 +22,27 @@ Workflow:
 3. Sign in at [chest.sh](https://chest.sh) → *Gates → New gate*, point at your public URL, set free + paid routes.
 4. Live in ~10 seconds. Any x402 client now pays USDC to hit the paid routes.
 
+### `skills/` — Claude Code skills that pay gates
+
+Drop-in skills that an agent runs locally, paying USDC per call through a Chest gate. The on-chain receipt splits between the data provider, the skill author (referrer), and the platform.
+
+| Skill | What it does |
+|---|---|
+| [`skills/trading-bot`](./skills/trading-bot) | Pulls price, technicals, and sentiment in parallel from three x402 gates and returns a buy/hold/sell verdict. Three on-chain receipts per decision. |
+
+Install:
+
+```bash
+git clone --depth 1 https://github.com/chesthq/apps
+cp -r apps/skills/trading-bot ~/.claude/skills/trading-decision
+```
+
+Then mint an agent token at [chest.sh/app/agent-wallet](https://chest.sh/app/agent-wallet) (scope to the matching app), top up with devnet USDC, and ask Claude Code "should I long bitcoin?".
+
 ## Coming soon
 
-- `skills/` — Claude Code skills that pay gates (`market-read`, `trading-bot` revshare demo)
 - `plugins/` — drop-in libraries (`call-a-gate` Node script, Next.js route handler)
 - `mcp/` — MCP servers that expose paid gates as tools
-
-These are blocked on the published `@chest-gate/sdk@0.2.0` having a working signing path against production. Will land once that's resolved.
 
 ## Conventions
 

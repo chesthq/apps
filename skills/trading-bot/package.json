@@ -1,0 +1,11 @@
+{
+  "name": "@chest/example-trading-bot",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "start": "node index.mjs"
+  },
+  "dependencies": {
+    "@chest-gate/sdk": "^0.2.1"
+  }
+}
