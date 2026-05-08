@@ -1,5 +1,5 @@
 ---
-name: trading-decision
+name: trading-bot
 description: Pull three paid x402 signals (price, orderbook, sentiment) in parallel through the Chest Gate registry and return a buy/hold/sell verdict for a crypto symbol (BTC, ETH, SOL...). Each call is a separate USDC settlement on Solana, the user pays a small fee per call, and the on-chain receipts split between the three providers, the skill author, and the platform. Use when the user asks "should I long X", "should I short X", "buy or sell X", or any quick directional decision on a crypto asset.
 ---
 
