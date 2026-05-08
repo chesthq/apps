@@ -1,5 +1,5 @@
 ---
-name: trading-bot
+name: trading-decision
 description: Pull three paid x402 signals (price, orderbook, sentiment) in parallel through the Chest Gate registry and return a buy/hold/sell verdict for a crypto symbol (BTC, ETH, SOL...). Each call is a separate USDC settlement on Solana, the user pays a small fee per call, and the on-chain receipts split between the three providers, the skill author, and the platform. Use when the user asks "should I long X", "should I short X", "buy or sell X", or any quick directional decision on a crypto asset.
 ---
 
@@ -33,7 +33,7 @@ Read `~/.chest/auth.json`. If it exists with a `token` starting with
 
 > "I need a Chest agent token to pay for the three signals on your behalf. Open
 > https://chest.sh/app/agent-wallet, click 'New agent token' (scope to the
-> `trading-bot` app), copy the `ca_live_…` value, then paste it back to me."
+> `trading-decision` app), copy the `ca_live_…` value, then paste it back to me."
 
 After receiving the token, save it:
 
@@ -57,7 +57,7 @@ Map common phrasings to ticker:
 **Step 4, Run the skill:**
 
 ```bash
-node /path/to/trading-bot/index.mjs <SYMBOL>
+node /path/to/trading-decision/index.mjs <SYMBOL>
 ```
 
 The script emits a structured block: per-source receipt lines (provider /

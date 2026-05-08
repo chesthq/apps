@@ -1,4 +1,4 @@
-# trading-bot
+# trading-decision
 
 Three paid x402 signals in parallel, one buy/hold/sell decision. Each call settles its own USDC payment on Solana, three on-chain receipts per decision. Receipts split four ways: three providers (publishers), the skill author (referrer), and the chest.sh platform.
 
