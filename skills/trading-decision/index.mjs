@@ -1,11 +1,11 @@
 #!/usr/bin/env node
-// trading-bot: pulls three paid signals in parallel through Chest Gate, then
+// trading-decision: pulls three paid signals in parallel through Chest Gate, then
 // emits a buy/hold/sell decision. Each source is a separate x402 settlement
 // on Solana, so a single decision produces three on-chain receipts. The
 // receipts split between three providers, the skill author, and the platform.
 //
 // Setup:
-//   1. Mint a key at https://chest.sh/app/agent-wallet (scope to @demo/trading-bot)
+//   1. Mint a key at https://chest.sh/app/agent-wallet (scope to @demo/trading-decision)
 //   2. Either:
 //        export CHEST_API_KEY=ca_live_…
 //      or save it to ~/.chest/auth.json (the skill flow does this for you)
@@ -24,7 +24,7 @@ import { homedir } from "node:os";
 import { join } from "node:path";
 
 const TOKEN = parseToken(process.argv.slice(2).join(" "));
-const APP_SLUG = process.env.CHEST_APP_SLUG ?? "trading-bot";
+const APP_SLUG = process.env.CHEST_APP_SLUG ?? "trading-decision";
 
 // Three independent providers, three different chest.sh gate slugs, three
 // different payTo wallets. Override any of the URLs via env to point at

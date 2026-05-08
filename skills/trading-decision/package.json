@@ -1,5 +1,5 @@
 {
-  "name": "@chest/example-trading-bot",
+  "name": "@chest/example-trading-decision",
   "private": true,
   "type": "module",
   "scripts": {

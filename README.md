@@ -28,13 +28,13 @@ Drop-in skills that an agent runs locally, paying USDC per call through a Chest 
 
 | Skill | What it does |
 |---|---|
-| [`skills/trading-bot`](./skills/trading-bot) | Pulls price, technicals, and sentiment in parallel from three x402 gates and returns a buy/hold/sell verdict. Three on-chain receipts per decision. |
+| [`skills/trading-decision`](./skills/trading-decision) | Pulls price, technicals, and sentiment in parallel from three x402 gates and returns a buy/hold/sell verdict. Three on-chain receipts per decision. |
 
 Install:
 
 ```bash
 git clone --depth 1 https://github.com/chesthq/apps
-cp -r apps/skills/trading-bot ~/.claude/skills/trading-decision
+cp -r apps/skills/trading-decision ~/.claude/skills/trading-decision
 ```
 
 Then mint an agent token at [chest.sh/app/agent-wallet](https://chest.sh/app/agent-wallet) (scope to the matching app), top up with devnet USDC, and ask Claude Code "should I long bitcoin?".
