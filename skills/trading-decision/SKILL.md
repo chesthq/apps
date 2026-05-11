@@ -43,7 +43,7 @@ chest-gate login
 ```
 
 Fallback only if the `chest-gate` CLI isn't installed: have the user mint a
-token at https://chest.sh/app/agent-wallet (scope to the `trading-decision`
+token at https://chest.sh/dashboard/agent-wallet (scope to the `trading-decision`
 app), then save it:
 
 ```bash
@@ -76,7 +76,7 @@ on-chain. Mention the total USDC spent.
 
 ## Funding the wallet (one-time)
 
-The agent wallet (address shown at https://chest.sh/app/agent-wallet) needs a small
+The agent wallet (address shown at https://chest.sh/dashboard/agent-wallet) needs a small
 amount of devnet USDC to spend. Direct the user to https://faucet.circle.com
 to top up. SOL fees are sponsored by Chest.
 
