@@ -10,16 +10,18 @@ This directory ships with `SKILL.md`. Drop the directory into your Claude Code s
 
 > Should I long bitcoin?
 
-The skill prompts for a Chest agent token (one-time), saves it to `~/.chest/auth.json`, then runs the same script below with the symbol extracted from your question.
+On first run the skill walks you through `chest-gate login` (browser PKCE), which writes the token to `~/.chest/agent-token.json`. It then runs the same script below with the symbol extracted from your question.
 
 ### As a CLI
 
 ```bash
-# 1. Mint an agent key at https://chest.sh/app/agent-wallet
-export CHEST_API_KEY=ca_live_…
+# 1. One-time: mint and save an agent token via browser PKCE.
+chest-gate login
+#    (writes ~/.chest/agent-token.json — the SDK reads it automatically)
+#    Or set CHEST_API_KEY=ca_live_… to override.
 
-# 2. Top up the agent wallet (devnet USDC) at the address shown there.
-#    https://faucet.circle.com / https://faucet.solana.com
+# 2. Top up the agent wallet (devnet USDC) at the address shown in
+#    https://chest.sh/app/agent-wallet — https://faucet.circle.com / https://faucet.solana.com
 
 # 3. Decide.
 node index.mjs SOL

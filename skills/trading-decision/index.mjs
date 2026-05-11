@@ -5,12 +5,11 @@
 // receipts split between three providers, the skill author, and the platform.
 //
 // Setup:
-//   1. Mint a key at https://chest.sh/app/agent-wallet (scope to @demo/trading-decision)
-//   2. Either:
-//        export CHEST_API_KEY=ca_live_…
-//      or save it to ~/.chest/auth.json (the skill flow does this for you)
-//   3. Top up the agent wallet (devnet USDC) at the address shown in /app/agent-wallet
-//   4. node index.mjs SOL
+//   1. Run `chest-gate login` (browser PKCE flow) to mint and save an agent
+//      token to ~/.chest/agent-token.json. Or set CHEST_API_KEY=ca_live_…
+//      in the environment to override.
+//   2. Top up the agent wallet (devnet USDC) at the address shown in /app/agent-wallet
+//   3. node index.mjs SOL
 //      node index.mjs "should I long bitcoin"
 //
 // Default sources (devnet):
@@ -99,10 +98,10 @@ function parseToken(input) {
 
 function loadApiKey() {
   if (process.env.CHEST_API_KEY) return process.env.CHEST_API_KEY;
-  const authPath = join(homedir(), ".chest", "auth.json");
-  if (existsSync(authPath)) {
+  const tokenPath = join(homedir(), ".chest", "agent-token.json");
+  if (existsSync(tokenPath)) {
     try {
-      const auth = JSON.parse(readFileSync(authPath, "utf-8"));
+      const auth = JSON.parse(readFileSync(tokenPath, "utf-8"));
       if (typeof auth?.token === "string" && auth.token.startsWith("ca_live_")) {
         return auth.token;
       }
@@ -141,9 +140,9 @@ const apiKey = loadApiKey();
 if (!apiKey) {
   console.error(
     "No Chest agent token found.\n" +
-    "Mint one at https://chest.sh/app/agent-wallet, then either:\n" +
-    "  export CHEST_API_KEY=ca_live_…\n" +
-    "  or save it to ~/.chest/auth.json as { \"token\": \"ca_live_…\" }",
+    "Run `chest-gate login` to mint one via browser (PKCE) — it writes\n" +
+    "~/.chest/agent-token.json for you. Or set CHEST_API_KEY=ca_live_… in\n" +
+    "the environment to override.",
   );
   process.exit(1);
 }
