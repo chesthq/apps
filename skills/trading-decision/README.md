@@ -21,7 +21,7 @@ chest-gate login
 #    Or set CHEST_API_KEY=ca_live_… to override.
 
 # 2. Top up the agent wallet (devnet USDC) at the address shown in
-#    https://chest.sh/app/agent-wallet — https://faucet.circle.com / https://faucet.solana.com
+#    https://chest.sh/dashboard/agent-wallet — https://faucet.circle.com / https://faucet.solana.com
 
 # 3. Decide.
 node index.mjs SOL
