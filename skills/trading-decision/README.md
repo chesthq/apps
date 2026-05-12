@@ -18,7 +18,7 @@ On first run the skill walks you through `chest-gate login` (browser PKCE), whic
 # 1. One-time: mint and save an agent token via browser PKCE.
 chest-gate login
 #    (writes ~/.chest/agent-token.json — the SDK reads it automatically)
-#    Or set CHEST_API_KEY=ca_live_… to override.
+#    Or set CHEST_AGENT_TOKEN=ca_live_… to override.
 
 # 2. Top up the agent wallet (devnet USDC) at the address shown in
 #    https://chest.sh/dashboard/agent-wallet — https://faucet.circle.com / https://faucet.solana.com
@@ -64,8 +64,8 @@ The bot doesn't care what the upstreams return as long as they hand back JSON. S
 
 ## What this demonstrates
 
-- One agent (`CHEST_API_KEY=ca_live_…`) routes paid traffic to three different upstreams in parallel.
+- One agent (`CHEST_AGENT_TOKEN=ca_live_…`) routes paid traffic to three different upstreams in parallel.
 - Each call goes through `gate.chest.sh`, which signs a Solana USDC transfer via Privy on the agent's behalf, settles the tx, and returns the upstream response with an `x-payment-response` receipt.
 - The receipt now carries the per-call breakdown: provider (`merchantAmount`), skill author (`referrerAmount`), platform (`protocolAmount`).
 - Skill authors get paid for every call routed through their skill, exactly the same mechanism the SDK uses for any referrer wallet.
-- The agent never holds Solana keys, just an API key.
+- The agent never holds Solana keys, just an agent token.
