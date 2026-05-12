@@ -2,7 +2,7 @@
 
 Copy-paste starter apps for [Chest Gate](https://chest.sh), the x402 payment layer for APIs and AI agents on Solana.
 
-In Chest, an **app** is anything identified by a `@author/app-name` slug. The dashboard recognises three kinds — `skill`, `plugin`, and `mcp` — and a fourth folder, `upstreams/`, holds example APIs you can put behind a Chest gate (those aren't apps, they're the thing apps pay).
+In Chest, an **app** is anything identified by a bare slug (e.g. `trading-decision`, `market-read`). The dashboard recognises three kinds — `skill`, `plugin`, and `mcp` — and a fourth folder, `upstreams/`, holds example APIs you can put behind a Chest gate (those aren't apps, they're the thing apps pay). Legacy `@author/app-name` slugs still resolve server-side via normalisation; the bare form is the canonical one.
 
 ## What's here
 
@@ -37,7 +37,7 @@ git clone --depth 1 https://github.com/chesthq/apps
 cp -r apps/skills/trading-decision ~/.claude/skills/trading-decision
 ```
 
-Then mint an agent token at [chest.sh/app/agent-wallet](https://chest.sh/app/agent-wallet) (scope to the matching app), top up with devnet USDC, and ask Claude Code "should I long bitcoin?".
+Then mint an agent token at [chest.sh/dashboard/agent-wallet](https://chest.sh/dashboard/agent-wallet) (scope to the matching app), top up with devnet USDC, and ask Claude Code "should I long bitcoin?".
 
 ## Coming soon
 

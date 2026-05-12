@@ -6,7 +6,7 @@
 //
 // Setup:
 //   1. Run `chest-gate login` (browser PKCE flow) to mint and save an agent
-//      token to ~/.chest/agent-token.json. Or set CHEST_API_KEY=ca_live_…
+//      token to ~/.chest/agent-token.json. Or set CHEST_AGENT_TOKEN=ca_live_…
 //      in the environment to override.
 //   2. Top up the agent wallet (devnet USDC) at the address shown in /app/agent-wallet
 //   3. node index.mjs SOL
@@ -96,8 +96,8 @@ function parseToken(input) {
   return (raw.split(/\s+/)[0] || "SOL").toUpperCase();
 }
 
-function loadApiKey() {
-  if (process.env.CHEST_API_KEY) return process.env.CHEST_API_KEY;
+function loadAgentToken() {
+  if (process.env.CHEST_AGENT_TOKEN) return process.env.CHEST_AGENT_TOKEN;
   const tokenPath = join(homedir(), ".chest", "agent-token.json");
   if (existsSync(tokenPath)) {
     try {
@@ -112,12 +112,12 @@ function loadApiKey() {
   return null;
 }
 
-async function callOne(src, apiKey) {
+async function callOne(src, agentToken) {
   const t0 = Date.now();
   try {
     const res = await paidFetch(src.url, {
-      mode: "api-key",
-      apiKey,
+      mode: "agent-token",
+      agentToken,
       appSlug: APP_SLUG,
     });
     return {
@@ -136,12 +136,12 @@ async function callOne(src, apiKey) {
   }
 }
 
-const apiKey = loadApiKey();
-if (!apiKey) {
+const agentToken = loadAgentToken();
+if (!agentToken) {
   console.error(
     "No Chest agent token found.\n" +
     "Run `chest-gate login` to mint one via browser (PKCE) — it writes\n" +
-    "~/.chest/agent-token.json for you. Or set CHEST_API_KEY=ca_live_… in\n" +
+    "~/.chest/agent-token.json for you. Or set CHEST_AGENT_TOKEN=ca_live_… in\n" +
     "the environment to override.",
   );
   process.exit(1);
@@ -151,7 +151,7 @@ console.log(`\nTrading decision: ${TOKEN}`);
 console.log(`Pulling ${SOURCES.length} paid signals in parallel from ${SOURCES.length} providers\n`);
 
 const t0 = Date.now();
-const results = await Promise.all(SOURCES.map((s) => callOne(s, apiKey)));
+const results = await Promise.all(SOURCES.map((s) => callOne(s, agentToken)));
 const totalMs = Date.now() - t0;
 
 // Per-source line + split breakdown
