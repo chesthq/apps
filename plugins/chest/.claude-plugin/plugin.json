@@ -1,7 +1,7 @@
 {
   "name": "chest",
   "description": "Pay, route, or publish Chest Gate x402 gates with a Privy-managed Solana wallet.",
-  "version": "0.4.1",
+  "version": "0.4.2",
   "author": {
     "name": "Chest Gate",
     "url": "https://chest.sh"
