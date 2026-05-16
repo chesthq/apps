@@ -1,0 +1,15 @@
+{
+  "name": "chest",
+  "description": "Chest Gate plugins for Claude Code. Pay, route, or publish x402 gates on Solana.",
+  "owner": {
+    "name": "Chest Gate",
+    "url": "https://chest.sh"
+  },
+  "plugins": [
+    {
+      "name": "chest",
+      "source": "./plugins/chest",
+      "description": "Pay, route, or publish Chest Gate x402 gates with a Privy-managed Solana wallet."
+    }
+  ]
+}

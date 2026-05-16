@@ -39,9 +39,21 @@ cp -r apps/skills/trading-decision ~/.claude/skills/trading-decision
 
 Then mint an agent token at [chest.sh/dashboard/agent-wallet](https://chest.sh/dashboard/agent-wallet) (scope to the matching app), top up with devnet USDC, and ask Claude Code "should I long bitcoin?".
 
+### `plugins/`, Claude Code plugins
+
+This repo is also a Claude Code plugin marketplace. Install plugins without cloning:
+
+```
+/plugin marketplace add chesthq/apps
+/plugin install chest
+```
+
+| Plugin | What it does |
+|---|---|
+| [`plugins/chest`](./plugins/chest) | The Chest Gate meta-skill: teaches agents how to spend, route, and publish x402 gates. Synced daily from [chest.sh/skill.md](https://chest.sh/skill.md). |
+
 ## Coming soon
 
-- `plugins/` — drop-in libraries (`call-a-gate` Node script, Next.js route handler)
 - `mcp/` — MCP servers that expose paid gates as tools
 
 ## Conventions
