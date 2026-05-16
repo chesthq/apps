@@ -1,6 +1,6 @@
 ---
 name: chest
-version: 0.4.1
+version: 0.4.2
 description: Pay, route, or publish Chest x402 gates with a Privy-managed Solana wallet. Pick a section below.
 homepage: https://chest.sh
 sections:
@@ -22,6 +22,8 @@ Chest Gate is the payment-routing layer for paid x402 APIs on Solana. Three thin
 1. **Spend**, agents pay any gate with a Privy-managed wallet, no seed phrase.
 2. **Route**, skills / MCPs / plugins that send paid traffic earn a referrer cut.
 3. **Sell**, API operators wrap an upstream URL, set a USDC price per call, collect payouts.
+
+> **Claude Code:** this skill is also packaged as a plugin. The one-command install is `/plugin marketplace add chesthq/apps` then `/plugin install chest@chest`. Other agents: keep reading.
 
 Pick the section that matches what the user asked for. All three share the same auth and wallet model, documented once in **§Shared, auth and agent wallet**.
 
